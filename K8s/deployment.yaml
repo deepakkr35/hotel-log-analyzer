@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: log-analyzer
+  namespace: app-log-analyzer 
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: log-analyzer
+  template:
+    metadata:
+      labels:
+        app: log-analyzer
+    spec:
+      containers:
+      - name: log-analyzer
+        image: deepakkr35/hotel-log-analyzer:v1.0
+        ports:
+        - containerPort: 5000
